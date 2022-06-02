@@ -3,17 +3,63 @@
   <head>
     <meta charset="UTF-8">
     <title>My Portfolio</title>
+
+		<!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+	<script src="https://kit.fontawesome.com/3dbca79df3.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click <a href="/hello">here</a> to see content created by server code.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+
+      <div id="intro" class="flex-container">
+
+        <div class="flex-child">
+        	<img id="profile-pic" src="images/profile-picture.jpg" alt="profile-picture">
+			<div class="social-icons">
+				<a href="https://www.linkedin.com/in/jinyueyuan/"><i class="fa-brands fa-linkedin fa-sm"></i></a>
+				<a href="https://github.com/emmayuan25"><i class="fa-brands fa-github fa-sm" ></i></a>
+			</div>
+        </div>
+
+        <div class="flex-child">
+        	<h1 id="intro-name">Emma Yuan's Portfolio</h1>            
+          <p id="short-intro-text">
+            Hello, my name is Emma Yuan and I am an undergraduate student studying Cognitive Science
+            and Computer Science at USC.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="tabs">
+
+				<input type="radio" name="tabs" id="tab-one" checked="checked">
+				<label for="tab-one">Hobbies</label>
+				<div class="tab">
+                    <p>I like adventures, food, and arts in life!</p>
+					<img class="slide-pic" src="images/hobby-pic1.JPG" alt="travel">
+					<img class="slide-pic" src="images/hobby-pic2.JPEG" alt="food">
+					<img class="slide-pic" src="images/hobby-pic3.jpg" alt="dog">
+				</div>
+
+				<input type="radio" name="tabs" id="tab-two">
+				<label for="tab-two">Projects</label>
+				<div class="tab">
+					<p>I built a full-stack interactive web app "Soul Element Reveal" with JavaScript and PHP</p>
+                    <img class="slide-pic" src="images/project-pic.jpg" alt="project-pic">
+                    <a class="go-to-link" href="http://303.itpwebdev.com/~jinyueyu/final_project_final/home.php">Try it</a>
+				</div>
+
+				<input type="radio" name="tabs" id="tab-three">
+				<label for="tab-three">Fun Facts</label>
+				<div class="tab">
+					<button class="go-to-link" onclick="addRandomGreeting()">Click Me!</button>
+                    <div id="greeting-container"></div>
+				</div>
+
+      </div>
+      
     </div>
   </body>
+  <script src="script.js"></script>
 </html>
