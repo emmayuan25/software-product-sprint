@@ -15,8 +15,8 @@
 /* Intro Section */
 #profile-pic {
   border-radius: 50%;
-  width: 100px;
   margin: 10px 20px;
+  width: 100px;
 }
 
 /* info tab */
@@ -24,32 +24,32 @@
   display: flex;
   flex-wrap: wrap;
   height: 300px;
-  width: 650px;
   margin: 30px 0px 0px;
+  width: 650px;
 }
 
 .tabs label {
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
-  padding: 1rem 2rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
   background-color: rgb(202, 180, 221);
   border: solid rgba(128, 128, 128, 0.384) 0.3px;
+  cursor: pointer;
+  display: flex;
   font-weight: bold;
+  justify-content: flex-start;
+  margin-right: 0.5rem;
+  padding: 1rem 2rem;
   transition: background ease 0.3s;
   }
 
 .tabs .tab {
-  order: 9;
-  flex-grow: 1;
-  width: 100%;
-  height: 200px;
-  display: none;
-  padding: 20px;
-  margin: 20px 0;
   border: solid rgb(228, 222, 222) 0.5px;
+  display: none;
+  flex-grow: 1;
+  height: 200px;
+  margin: 20px 0;
+  order: 9;
+  padding: 20px;
+  width: 100%;
 }
  
 .tabs input[type="radio"] {
@@ -70,8 +70,8 @@
 
 .go-to-link {
   background-color: rgba(141, 68, 209, 0.267);
-  border-radius: 5%;
   border: none;
+  border-radius: 5%;
   padding: 10px;
   width: 50px;
 }
