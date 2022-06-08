@@ -1,101 +1,101 @@
 /* Body */
 html, body {
-    background-color: #EBEBEB;
-    font-family: 'Eczar', 'Noto Sans SC', 'Helvetica';
-    height: 100%;
-    margin: 0;
-    scroll-behavior: smooth;
-  }
+  background-color: #EBEBEB;
+  font-family: 'Eczar', 'Noto Sans SC', 'Helvetica';
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+}
   
   
-  /* Side Bar */
-  .sidebar {
-    border: 3px solid black;
-    box-shadow: 5px 5px 1px black, 2px 2px 1px black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    left: 0;
-    min-height: 100vh;
-    position: fixed;
-    text-align: center;
-    top: 0;
-    width: 300px;
-  }
+/* Side Bar */
+.sidebar {
+  border: 3px solid black;
+  box-shadow: 5px 5px 1px black, 2px 2px 1px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  min-height: 100vh;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 300px;
+}
   
-  /* Pages */
-  .pages {
-    margin-left: 350px;
-  }
+/* Pages */
+.pages {
+  margin-left: 350px;
+}
   
-  .page {
-    height: 100vh;
-  }
+.page {
+  height: 100vh;
+}
   
-  .page-content {
-    padding-top: 100px;
-    padding-left: 50px;
-  }
+.page-content {
+  padding-top: 100px;
+  padding-left: 50px;
+}
   
-  .headings {
-    color: black;
-    font-size: 1.5em;
-    padding-left: 30px;
-    text-align: left;
-  }
+.headings {
+  color: black;
+  font-size: 1.5em;
+  padding-left: 30px;
+  text-align: left;
+}
   
-  .headings:hover {
-    color: rgb(120, 115, 115);
-  }
+.headings:hover {
+  color: rgb(120, 115, 115);
+}
   
   
-  /* Intro Page */
-  .heading-first {
-    font-size: 4.5em;
-    margin-bottom: 0;
-  }
+/* Intro Page */
+.heading-first {
+  font-size: 4.5em;
+  margin-bottom: 0;
+}
   
-  .heading-second {
-    font-size: 1.2em;
-  }
+.heading-second {
+  font-size: 1.2em;
+}
   
-  .heading-third {
-    font-size: 28px;
-  }
+.heading-third {
+  font-size: 28px;
+}
   
-  .ext-links {
-    color: black;
-    font-size: 1em;
-  }
+.ext-links {
+  color: black;
+  font-size: 1em;
+}
   
-  /* Project Page */
-  .collapsible {
-    background-color: inherit;
-    border: none;
-    border-bottom: 2px solid rgb(40, 39, 39);
-    border-top: 2px solid rgb(40, 39, 39);
-    box-shadow: 2px 2px 1px black, 2px 2px 1px black;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 28px;
-    padding: 5px 20px;
-    text-align: left;
-    width: 60%;
-  }
+/* Project Page */
+.collapsible {
+  background-color: inherit;
+  border: none;
+  border-bottom: 2px solid rgb(40, 39, 39);
+  border-top: 2px solid rgb(40, 39, 39);
+  box-shadow: 2px 2px 1px black, 2px 2px 1px black;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 28px;
+  padding: 5px 20px;
+  text-align: left;
+  width: 60%;
+}
+
+.active, .collapsible:hover {
+  background-color: #e4e3e3;
+}
+
+.collap-content {
+  background-color: inherit;
+/* display: none; */
+  overflow: none;
+  padding: 0 20px;
+  width: 50%;
+}
   
-  .active, .collapsible:hover {
-    background-color: #e4e3e3;
-  }
-  
-  .collap-content {
-    background-color: inherit;
-    /* display: none; */
-    overflow: none;
-    padding: 0 20px;
-    width: 50%;
-  }
-  
-  /* More Page */
-  .slide-img {
-    height: 300px;
-  }
+/* More Page */
+.slide-img {
+	height: 300px;
+}
