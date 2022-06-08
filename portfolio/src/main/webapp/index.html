@@ -2,69 +2,91 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Emma's Site</title>
 
-		<!-- Stylesheets -->
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+	<!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-	<!-- <script src="https://kit.fontawesome.com/3dbca79df3.js" crossorigin="anonymous"></script> -->
     <script src="script.js"></script>
+
+	<!-- Title Icon -->
+    <link rel="icon" href="images/favicon.ico">
+
   </head>
   <body>
     <div id="content">
 
-      <div id="intro" class="flex-container">
+		<!-- Side Navigation Bar -->
+		<div class="sidebar">
+			<a href="#intro" class="headings">CS @ USC</a>
+			<a href="#project" class="headings">Projects</a>
+			<a href="#more" class="headings">More</a>
 
-        <div class="flex-child">
-        	<img id="profile-pic" src="images/profile-picture.jpg" alt="profile-picture">
-			<div class="social-icons">
-				<a href="https://www.linkedin.com/in/jinyueyuan/">
-                    <!-- <i class="fa-brands fa-linkedin fa-2x"></i> -->
-                    <img style="margin-left: 40px; width:20px;" src="images/linkedin.jpg" alt="linkedin">
-                </a>
-				<a href="https://github.com/emmayuan25">
-                    <!-- <i class="fa-brands fa-github-square fa-2x"></i> -->
-                    <img style="margin-left: 10px; width: 20px;" src="images/github.jpg" alt="github">
-                </a>
+		</div>
+
+		<!-- Main pages -->
+		<div class="pages">
+			
+			<!-- Intro -->
+			<div id="intro" class="page">
+				<div class="page-content">
+					<span class="heading-third">Hello, </span>
+					<span class="heading-third">你好。</span>
+					<p class="heading-first">Emma Jinyue Yuan</p>
+					<p class="heading-second">Rising Junior @ University of Southern California</p>
+					<p class="heading-second">B.S. Computer Science && B.A. Cognitive Science </p>
+
+					<div class="ext-links-div">
+						<a class="ext-links" href="https://github.com/emmayuan25/" target="_blank">GitHub</a>,
+						<a class="ext-links" href="https://linkedin.com/in/jinyueyuan/" target="_blank">LinkedIn</a>,
+						<a class="ext-links" href="https://open.spotify.com/playlist/09XFaASqRz1zZBgbmieqCv?si=c47b754483624f02" target="_blank">Spotify</a>
+					</div>
+				</div>
 			</div>
-        </div>
 
-        <div class="flex-child">
-        	<h1 id="intro-name">Emma Yuan's Portfolio</h1>            
-          <p id="short-intro-text">
-            Hello, my name is Emma Yuan and I am an undergraduate student studying Cognitive Science
-            and Computer Science at USC.
-          </p>
-        </div>
 
-      </div>
+			<!-- Projects -->
+			<div id="project" class="page">
+				<div class="page-content">
+					<p class="heading-third">Projects</p>
+					<button type="button" class="collapsible">Soul Element Reveal, May 2022</button>
+					<div class="collap-content">
+						<p>
+							"Soul Element Reveal" is an online quiz that tests your inner soul and personality. As a powerful web app, it also allows you to leave comments and share your result with other people, as well as see your group's percentage in the community.
+						</p>
+						<p>
+							The project was implemented using vanilla JavaScript and PHP, along with jQuery, HTML, and CSS. The backend is supported by MySQL with a normalized database.
+						</p>
+						<a class="ext-links" href="http://303.itpwebdev.com/~jinyueyu/final_project_final/home.php" target="_blank">Try it here!</a>
+					</div>
 
-      <div class="tabs">
-
-				<input type="radio" name="tabs" id="tab-one" checked="checked">
-				<label for="tab-one">Hobbies</label>
-				<div class="tab">
-                    <p>I like adventures, food, and arts in life!</p>
-					<img class="slide-pic" src="images/hobby-pic1.JPG" alt="travel">
-					<img class="slide-pic" src="images/hobby-pic2.JPEG" alt="food">
-					<img class="slide-pic" src="images/hobby-pic3.jpg" alt="dog">
 				</div>
+			</div>
 
-				<input type="radio" name="tabs" id="tab-two">
-				<label for="tab-two">Projects</label>
-				<div class="tab">
-					<p>I built a full-stack interactive web app "Soul Element Reveal" with JavaScript and PHP</p>
-                    <img class="slide-pic" src="images/project-pic.jpg" alt="project-pic">
-                    <a class="go-to-link" href="http://303.itpwebdev.com/~jinyueyu/final_project_final/home.php" target="_blank">Try it</a>
+
+			<!-- More -->
+			<div id="more" class="page">
+				<div class="page-content">
+					<p class="heading-third">More</p>
+
+					<!-- Image Slideshow -->
+					<img onclick=changeSlideImg() id="slideImg" class="slide-img" src="images/ikea.jpg">
+
+					<!-- Fun Facts -->
+					<p onclick=addRandomGreeting() class="ext-link" style="text-decoration: underline;">Get funfacts!</p>
+					<div id="greeting-container"></div>
 				</div>
+			</div>
 
-				<input type="radio" name="tabs" id="tab-three">
-				<label for="tab-three">Fun Facts</label>
-				<div class="tab">
-					<button class="go-to-link" onclick="addRandomGreeting()">Click Me!</button>
-                    <div id="greeting-container"></div>
-				</div>
 
-      </div>
+
+		</div>
+
+    
       
     </div>
   </body>
