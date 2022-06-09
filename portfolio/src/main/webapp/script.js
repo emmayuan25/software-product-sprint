@@ -40,6 +40,7 @@ function changeSlideImg() {
   
   // Add it to the page.
   const setImg = document.getElementById('slideImg');
+  
   setImg.src = getImg;
 }
   
@@ -50,5 +51,6 @@ async function showWelcomeMsg() {
   const textFromResponse = await responseData.text();
 
   const msgContainer = document.getElementById('welcome-msg-container');
+  
   msgContainer.innerHTML = textFromResponse;
 }
