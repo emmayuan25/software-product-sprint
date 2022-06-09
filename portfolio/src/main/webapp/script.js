@@ -43,3 +43,12 @@ function addRandomGreeting() {
     setImg.src = getImg;
   }
   
+
+// Fetches welcome message and add to front page
+async function showWelcomeMsg() {
+    const responseData = await fetch('/hello');
+    const textFromResponse = await responseData.text();
+
+    const msgContainer = document.getElementById('welcome-msg-container');
+    msgContainer.innerHTML = textFromResponse;
+}
