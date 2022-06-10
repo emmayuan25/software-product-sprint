@@ -48,9 +48,13 @@ function changeSlideImg() {
 // Fetches welcome message and add to front page
 async function showWelcomeMsg() {
   const responseData = await fetch('/hello');
-  const textFromResponse = await responseData.text();
+  const textFromResponse = await responseData.json();
 
   const msgContainer = document.getElementById('welcome-msg-container');
   
-  msgContainer.innerHTML = textFromResponse;
+  console.log(textFromResponse[1]);
+
+  const getMsg = textFromResponse[Math.floor(Math.random() * textFromResponse.length)];
+
+  msgContainer.innerHTML = getMsg;
 }
