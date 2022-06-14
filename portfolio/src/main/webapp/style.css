@@ -95,11 +95,21 @@ html, body {
   padding: 0 20px;
   width: 50%;
 }
-  
+
+
+/* Map Page */
+#map {
+    height: 400px;
+    width: 600px;
+}
+
+
 /* More Page */
 .slide-img {
   height: 300px;
 }
+
+
 
 /* Contact Page */
 .contact-box {
