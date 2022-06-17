@@ -60,15 +60,20 @@ async function showWelcomeMsg() {
 }
 
 // Toggle Tab
-function toggleTab(id) {
-  if(id.style.display = "none") {
-    id.style.display = "block";
-  } else {
-    id.style.display = "none";
+function toggleMarkerTab() {
+  var button = document.getElementById("addMarkerBtn");
+  button.onclick = () => {
+      var divForm = document.getElementById('createMarkerForm');
+      console.log(divForm);
+      console.log(divForm.style);
+      if(divForm.style.display !== 'none') {
+          divForm.style.display = 'none';
+      } else {
+          divForm.style.display = 'block';
+      }
   }
-  console.log("working");
 }
-
+toggleMarkerTab();
 // Map
 let map;
 function initMap() {

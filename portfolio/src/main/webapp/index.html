@@ -11,7 +11,6 @@
 
 	<!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 
 	<!-- Title Icon -->
     <link rel="icon" href="images/favicon.ico">
@@ -75,8 +74,7 @@
                     <p class="heading-third">Map</p>
                     <div id="map"></div>
                     <div class="markerBox">
-                        <p id="createMarker">Create a marker!</p>
-                        <button onclick="toggleTab(createMarkerForm)">+</button>
+                        <p id="createMarker">Create a marker!</p><button id="addMarkerBtn">+</button>
                         <div id="createMarkerForm">
                         <form action="" method="POST" class="marker-form">
                             <label for="lat">Latitude</label>
@@ -156,6 +154,7 @@
     
       
     </div>
+  <script src="script.js"></script>
   <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsX9D75SI6MX7MNpyvchJ-L1UukqsRmO8&callback=initMap">
   </script>
