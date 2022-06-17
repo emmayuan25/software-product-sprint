@@ -59,16 +59,71 @@ async function showWelcomeMsg() {
   msgContainer.innerHTML = getMsg;
 }
 
+// Toggle Tab
+function toggleTab(id) {
+  if(id.style.display = "none") {
+    id.style.display = "block";
+  } else {
+    id.style.display = "none";
+  }
+  console.log("working");
+}
 
 // Map
 let map;
-
 function initMap() {
+  const LALatLng = { lat: 34.0522, lng: -118.2437 };
+
+  // initilize map centered at LA  
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 34.0522, lng: -118.2437 },
-    zoom: 8,
+    center: LALatLng,
+    zoom: 1,
   });
+  // default set the map to tilt to 45 degrees  
+  map.setTilt(45);
+
+  // default markers     
+  addMarkers (
+    map, 34.0522, -118.2437, 'Los Angeles',
+    'I go to school at USC, which is near downtown los angeles', 'Here is where I\'m currently located!'
+  );
+  addMarkers (
+    map, 22.5429, 114.0596, 'Shenzhen',
+    'Shenzhen is one of the largest cities in China. Located in the Southeast bay of Asia, Shenzhen is known for being a fast-growing city that attracts young people and companies from all over the world. It is also where I was born and raised.', 'Aug 12, 2021'
+  );
+  addMarkers (
+      map, -13.5320, -71.9675, 'Cuzco',
+      'I visited Cuzco last month. It was my first time visiting South America and it brought a lot of surprises. Peru is a beautiful country and hikes there were amazing. I would love to go back in the future.', 'May 27, 2022'
+  );
+
   console.log("map is loaded");
+}
+
+function addMarkers(map, lat, lng, title, description, date) {
+  const marker = new google.maps.Marker ({
+    position: {lat: lat, lng: lng},
+    map: map,
+    title: title
+  });
+
+  const descriptionString = 
+    '<div class="infoContent">' + 
+    '<h2 class="infoTitle">' +
+    title +
+    '</h2>' +
+    '<p class="infoDescription">' +
+    description +
+    '</p>' +
+    '<p class="lastVisitedDate">' +
+    'Last visited: ' +
+    date +
+    '</p>' +
+    '</div>';
+
+  const infoWindow = new google.maps.InfoWindow({content: descriptionString});
+  marker.addListener('click', () => {
+      infoWindow.open(map, marker);
+  });
 }
 
 window.initMap = initMap;

@@ -99,14 +99,27 @@ html, body {
 
 /* Map Page */
 #map {
-    height: 400px;
-    width: 600px;
+  height: 400px;
+  width: 600px;
 }
+
 
 
 /* More Page */
 .slide-img {
   height: 300px;
+}
+
+.markerBox {
+  border: 3px solid black;
+  box-shadow: 2px 2px 1px black, 2px 2px 1px black;
+  margin-top: 10px;
+  padding: 5px;
+  width: 400px;
+}
+
+#createMarkerForm {
+  display: none;
 }
 
 

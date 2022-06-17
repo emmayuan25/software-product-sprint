@@ -74,6 +74,30 @@
                 <div class="page-content">
                     <p class="heading-third">Map</p>
                     <div id="map"></div>
+                    <div class="markerBox">
+                        <p id="createMarker">Create a marker!</p>
+                        <button onclick="toggleTab(createMarkerForm)">+</button>
+                        <div id="createMarkerForm">
+                        <form action="" method="POST" class="marker-form">
+                            <label for="lat">Latitude</label>
+                            <input type="text" id="lat" />
+                            <br/>
+                            <label for="lng">Longitude</label>
+                            <input type="text" id="lng" />
+                            <br/>
+                            <label for="loc-name">Location Name</label>
+                            <input type="text" id="loc-name" />
+                            <br/>
+                            <label for="date">Last Visited Date</label>
+                            <input type="text" id="date" />
+                            <br/>
+                            <label for="loc-description">Description</label>
+                            <textarea name="loc-description"></textarea>
+                            <br/>
+                            <input type="submit" />
+                        </form>
+                        </div>
+                    </div>
                 </div>
             </div>
 
