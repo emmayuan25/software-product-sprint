@@ -74,6 +74,8 @@ function toggleMarkerTab() {
   }
 }
 toggleMarkerTab();
+
+
 // Map
 let map;
 function initMap() {
@@ -104,6 +106,8 @@ function initMap() {
   console.log("map is loaded");
 }
 
+
+var prev_infoWindow = false;
 function addMarkers(map, lat, lng, title, description, date) {
   const marker = new google.maps.Marker ({
     position: {lat: lat, lng: lng},
@@ -125,9 +129,14 @@ function addMarkers(map, lat, lng, title, description, date) {
     '</p>' +
     '</div>';
 
-  const infoWindow = new google.maps.InfoWindow({content: descriptionString});
+  var infoWindow = new google.maps.InfoWindow({content: descriptionString});
   marker.addListener('click', () => {
+      if(prev_infoWindow){
+        prev_infoWindow.close();
+        console.log("close");
+      }
       infoWindow.open(map, marker);
+      prev_infoWindow = infoWindow;
   });
 }
 
