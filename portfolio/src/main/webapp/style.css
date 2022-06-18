@@ -99,8 +99,20 @@ html, body {
 
 /* Map Page */
 #map {
-    height: 400px;
-    width: 600px;
+  height: 300px;
+  width: 600px;
+}
+
+.markerBox {
+  border: 3px solid black;
+  box-shadow: 2px 2px 1px black, 2px 2px 1px black;
+  margin-top: 20px;
+  padding: 5px;
+  width: 400px;
+}
+  
+#createMarkerForm {
+  display: none;
 }
 
 
@@ -108,7 +120,6 @@ html, body {
 .slide-img {
   height: 300px;
 }
-
 
 
 /* Contact Page */
