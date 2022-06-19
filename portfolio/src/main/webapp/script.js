@@ -131,11 +131,11 @@ function addMarkers(map, lat, lng, title, description, date) {
   // open info window
   var infoWindow = new google.maps.InfoWindow({content: descriptionString});
   marker.addListener('click', () => {
-      if(prev_infoWindow){
-        prev_infoWindow.close();
-      }
-      infoWindow.open(map, marker);
-      prev_infoWindow = infoWindow;
+    if(prev_infoWindow){
+      prev_infoWindow.close();
+    }
+    infoWindow.open(map, marker);
+    prev_infoWindow = infoWindow;
   });
 }
 
@@ -154,7 +154,7 @@ function fetchMarkers() {
 /** Sends a marker to the backend for saving. */
 function postMarker(lat, lng, title, content, date) {
   const params = new URLSearchParams();
-  console.log("here")
+
   params.append('lat', lat);
   params.append('lng', lng);
   params.append('title', title);
@@ -198,6 +198,7 @@ function buildInfoWindowInput(lat, lng) {
     const title = document.getElementById("loc-name").value;
     const date = document.getElementById("date").value;
     const content = document.getElementById("loc-description").value;
+
     if(title && date && content){
       postMarker(lat, lng, title, content, date);
       addMarkers(map, lat, lng, title, content, date);
@@ -211,6 +212,7 @@ function buildInfoWindowInput(lat, lng) {
     document.getElementById("loc-name").value = "";
     document.getElementById("date").value ="";
     document.getElementById("loc-description").value ="";
+
     map.setZoom(1);
   }
   
