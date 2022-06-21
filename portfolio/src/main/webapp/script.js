@@ -104,6 +104,12 @@ function openMarkerTab() {
   divForm.style.display = 'block';
 }
 
+// Close Edit Tab
+function closeMarkerTab() {
+  var divForm = document.getElementById('createMarkerForm');
+  divForm.style.display = 'none';
+}
+
 // add new marker to map and open info window (single)
 var prev_infoWindow = false;
 
@@ -204,15 +210,23 @@ function buildInfoWindowInput(lat, lng) {
       addMarkers(map, lat, lng, title, content, date);
       editMarker.setMap(null);
     } else {
-      throw 'null values';
+      throw 'Title, date, and content cannot be empty. Please type in something.';
     }
+    
+    clearInputFields();
+  }
 
+  function clearInputFields() {
+    // clear input fields
     document.getElementById("lat").value = NaN;
     document.getElementById("lng").value = NaN;
     document.getElementById("loc-name").value = "";
-    document.getElementById("date").value ="";
     document.getElementById("loc-description").value ="";
 
+    // close edit tab
+    closeMarkerTab();
+
+    // Zoom out map to world view
     map.setZoom(1);
   }
   
