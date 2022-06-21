@@ -59,22 +59,6 @@ async function showWelcomeMsg() {
   msgContainer.innerHTML = getMsg;
 }
 
-// Toggle Tab
-function toggleMarkerTab() {
-  var button = document.getElementById("addMarkerBtn");
-  button.onclick = () => {
-      var divForm = document.getElementById('createMarkerForm');
-      console.log(divForm);
-      console.log(divForm.style);
-      if(divForm.style.display !== 'none') {
-          divForm.style.display = 'none';
-      } else {
-          divForm.style.display = 'block';
-      }
-  }
-}
-toggleMarkerTab();
-
 
 // Map
 let map;
@@ -104,10 +88,31 @@ function initMap() {
   );
 
   console.log("map is loaded");
+
+  // get lat and lng when user clicks on the map
+  map.addListener('click', (event) => {
+    createMarkerForEdit(event.latLng.lat(), event.latLng.lng());
+  });
+
+  // get existing markers from backend
+  fetchMarkers();
 }
 
+// Open Edit Tab
+function openMarkerTab() {
+  var divForm = document.getElementById('createMarkerForm');
+  divForm.style.display = 'block';
+}
 
+// Close Edit Tab
+function closeMarkerTab() {
+  var divForm = document.getElementById('createMarkerForm');
+  divForm.style.display = 'none';
+}
+
+// add new marker to map and open info window (single)
 var prev_infoWindow = false;
+
 function addMarkers(map, lat, lng, title, description, date) {
   const marker = new google.maps.Marker ({
     position: {lat: lat, lng: lng},
@@ -129,15 +134,100 @@ function addMarkers(map, lat, lng, title, description, date) {
     '</p>' +
     '</div>';
 
+  // open info window
   var infoWindow = new google.maps.InfoWindow({content: descriptionString});
   marker.addListener('click', () => {
-      if(prev_infoWindow){
-        prev_infoWindow.close();
-        console.log("close");
-      }
-      infoWindow.open(map, marker);
-      prev_infoWindow = infoWindow;
+    if(prev_infoWindow){
+      prev_infoWindow.close();
+    }
+    infoWindow.open(map, marker);
+    prev_infoWindow = infoWindow;
   });
 }
 
 window.initMap = initMap;
+
+
+// Get backend markers and add to map
+function fetchMarkers() {
+  fetch('/markers').then(response => response.json()).then((markers) => {
+    markers.forEach (
+      (marker) => {
+        addMarkers(map, marker.lat, marker.lng, marker.title, marker.content, marker.date)});
+    });
+}
+
+/** Sends a marker to the backend for saving. */
+function postMarker(lat, lng, title, content, date) {
+  const params = new URLSearchParams();
+
+  params.append('lat', lat);
+  params.append('lng', lng);
+  params.append('title', title);
+  params.append('content', content);
+  params.append('date', date);
+  
+  fetch('/markers', {method: 'POST', body: params});
+}
+  
+/** Creates a marker that shows a textbox the user can edit. */
+let editMarker;
+function createMarkerForEdit(lat, lng) {
+  // If we're already showing an editable marker, then remove it.
+  if (editMarker) {
+    editMarker.setMap(null);
+  }
+
+  // open up new marker at selected position
+  editMarker =
+    new google.maps.Marker({position: {lat: lat, lng: lng}, map: map});
+
+  // center map to the new marker
+  map.panTo(editMarker.getPosition());
+  map.setZoom(5);
+
+  // open up edit tab
+  document.getElementById("lat").value = lat;
+  document.getElementById("lng").value = lng;
+  openMarkerTab();
+
+  buildInfoWindowInput(lat, lng);
+}
+  
+
+// Opens edit box and 
+function buildInfoWindowInput(lat, lng) {
+  const button = document.getElementById('submit-marker');
+
+  button.onclick = (e) => {
+    e.preventDefault();
+    const title = document.getElementById("loc-name").value;
+    const date = document.getElementById("date").value;
+    const content = document.getElementById("loc-description").value;
+
+    if(title && date && content){
+      postMarker(lat, lng, title, content, date);
+      addMarkers(map, lat, lng, title, content, date);
+      editMarker.setMap(null);
+    } else {
+      throw 'Title, date, and content cannot be empty. Please type in something.';
+    }
+    
+    clearInputFields();
+  }
+
+  function clearInputFields() {
+    // clear input fields
+    document.getElementById("lat").value = NaN;
+    document.getElementById("lng").value = NaN;
+    document.getElementById("loc-name").value = "";
+    document.getElementById("loc-description").value ="";
+
+    // close edit tab
+    closeMarkerTab();
+
+    // Zoom out map to world view
+    map.setZoom(1);
+  }
+  
+}
